@@ -1,0 +1,22 @@
+{
+  "name": "unnamedproj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^17.2.0",
+    "fs-extra": "^11.3.0",
+    "path": "^0.12.7",
+    "pdf-lib": "^1.17.1",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^5.3.93",
+    "yargs": "^18.0.0"
+  }
+}
