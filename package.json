@@ -1,22 +1,27 @@
 {
-  "name": "unnamedproj",
+  "name": "stitchpdf",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "StitchPDF is a Node.js library and CLI tool for parsing, analyzing, and merging PDF files. It leverages pdf-lib and pdfjs-dist for powerful, low-level PDF operations.",
+  "main": "index.mjs",
+  "type": "module",
+  "bin": {
+    "stitchpdf": "./bin/cli.mjs"
   },
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "start": "node index.mjs",
+    "test": "echo \"No test defined\" && exit 1"
+  },
+  "author": "Peter Allain",
+  "license": "MIT",
   "dependencies": {
+    "canvas": "^3.1.2",
     "chalk": "^5.4.1",
     "csv-parser": "^3.2.0",
     "dotenv": "^17.2.0",
     "fs-extra": "^11.3.0",
-    "path": "^0.12.7",
     "pdf-lib": "^1.17.1",
     "pdf-parse": "^1.1.1",
-    "pdfjs-dist": "^5.3.93",
+    "pdfjs-dist": "^3.4.120",
     "yargs": "^18.0.0"
   }
 }
