@@ -1,25 +1,35 @@
-// index.mjs or index.js with "type": "module"
-import fs from 'fs';
-import path from 'path';
-import pdfjs from 'pdfjs-dist/legacy/build/pdf.js';
+// Basic test file for stitchPDF
+import { extractText, analyzeFonts, validatePdf } from '../src/index.mjs';
 
-const { getDocument } = pdfjs;
-
-const extractTextFromPDF = async (filePath) => {
-    const data = new Uint8Array(await fs.promises.readFile(filePath));
-    const loadingTask = getDocument({ data });
-    const pdf = await loadingTask.promise;
-
-    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-        const page = await pdf.getPage(pageNum);
-        const content = await page.getTextContent();
-
-        console.log(`\n🔹 Page ${pageNum}:`);
-        for (const item of content.items) {
-            console.log(`"${item.str}" at x=${item.transform[4]}, y=${item.transform[5]}`);
-        }
+async function testLibrary() {
+    console.log('stitchPDF Library Test');
+    console.log('=====================');
+    
+    try {
+        // Test with the BambooUAT file if it exists
+        const testFile = 'Path/to/your/file';
+        
+        console.log(`Testing with: ${testFile}`);
+        
+        // Test font analysis
+        console.log('\n1. Font Analysis Test:');
+        const fontAnalysis = await analyzeFonts(testFile);
+        console.log(`   Found ${fontAnalysis.totalFonts} fonts`);
+        console.log(`   ${fontAnalysis.uniqueFamilies} unique families`);
+        console.log(`   ${fontAnalysis.embeddedFonts} embedded fonts`);
+        
+        // Test validation
+        console.log('\n2. PDF Validation Test:');
+        const validation = await validatePdf(testFile);
+        console.log(`   Valid: ${validation.valid}`);
+        console.log(`   Pages: ${validation.pageCount}`);
+        console.log(`   Size: ${(validation.fileSize / 1024 / 1024).toFixed(2)} MB`);
+        
+        console.log('\n✅ All tests passed!');
+        
+    } catch (error) {
+        console.error('❌ Test failed:', error.message);
     }
-};
+}
 
-const inputPDF = path.resolve('../Entering Time.pdf');
-extractTextFromPDF(inputPDF);
+testLibrary(); 

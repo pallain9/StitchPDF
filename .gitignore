@@ -1,1 +1,3 @@
 node_modules
+*.pdf
+*.stitchpdf-secure
