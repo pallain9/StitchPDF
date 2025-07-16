@@ -1,18 +1,54 @@
 {
   "name": "stitchpdf",
   "version": "1.0.0",
-  "description": "StitchPDF is a Node.js library and CLI tool for parsing, analyzing, and merging PDF files. It leverages pdf-lib and pdfjs-dist for powerful, low-level PDF operations.",
-  "main": "index.mjs",
+  "description": "StitchPDF is a comprehensive Node.js library and CLI tool for PDF processing with security validation, text extraction, page insertion, and mail merge capabilities. Features both open-source and premium licensed functionality.",
+  "main": "src/index.mjs",
   "type": "module",
   "bin": {
     "stitchpdf": "./bin/cli.mjs"
   },
   "scripts": {
-    "start": "node index.mjs",
-    "test": "echo \"No test defined\" && exit 1"
+    "start": "node examples/basic-usage.mjs",
+    "test": "node test/index.mjs",
+    "examples": "node examples/basic-usage.mjs",
+    "cli": "node bin/cli.mjs",
+    "build": "echo 'No build step required for ES modules'",
+    "validate": "node bin/cli.mjs validate './Entering Time.pdf'"
   },
+  "keywords": [
+    "pdf",
+    "pdf-manipulation",
+    "text-extraction",
+    "pdf-security",
+    "mail-merge",
+    "pdf-validation",
+    "javascript-detection",
+    "page-insertion",
+    "pdf-processing",
+    "cli-tool",
+    "freemium",
+    "licensed-features"
+  ],
   "author": "Peter Allain",
   "license": "MIT",
+  "homepage": "https://github.com/your-username/stitchPDF",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/stitchPDF.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/stitchPDF/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "src/",
+    "bin/",
+    "examples/",
+    "README.md",
+    "LICENSE"
+  ],
   "dependencies": {
     "canvas": "^3.1.2",
     "chalk": "^5.4.1",
@@ -22,6 +58,6 @@
     "pdf-lib": "^1.17.1",
     "pdf-parse": "^1.1.1",
     "pdfjs-dist": "^3.4.120",
-    "yargs": "^18.0.0"
+    "yargs": "^17.7.2"
   }
 }
