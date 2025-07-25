@@ -1,2 +1,3 @@
-const fs = require('fs-extra');
-module.exports = { read: fs.readFile, write: fs.writeFile };
+import fs from 'fs-extra';
+export const read = fs.readFile;
+export const write = fs.writeFile;

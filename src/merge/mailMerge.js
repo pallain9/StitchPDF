@@ -1,8 +1,8 @@
 // Mail Merge Module - PREMIUM FEATURE - SECURE
 import fs from 'fs';
 import { PDFDocument, rgb } from 'pdf-lib';
-import { LicenseManager } from '../licensing/licenseManager.mjs';
-import { validateMailMerge, _0x9a8b } from '../licensing/securityValidator.mjs';
+import { LicenseManager } from '../licensing/licenseManager.js';
+import { validateMailMerge, _0x9a8b } from '../licensing/securityValidator.js';
 
 // Initialize license manager with security
 const licenseManager = new LicenseManager();

@@ -1,9 +1,9 @@
 // Page Insertion Module - PREMIUM FEATURE - SECURE
 import fs from 'fs';
 import { PDFDocument } from 'pdf-lib';
-import { LicenseManager } from '../licensing/licenseManager.mjs';
-import { validatePageInsertion, _0x9a8b } from '../licensing/securityValidator.mjs';
-import { extractText } from '../text/extractor.mjs';
+import { LicenseManager } from '../licensing/licenseManager.js';
+import { validatePageInsertion, _0x9a8b } from '../licensing/securityValidator.js';
+import { extractText } from '../text/extractor.js';
 
 // Initialize license manager with security
 const licenseManager = new LicenseManager();

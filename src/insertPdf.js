@@ -1,7 +1,7 @@
-const fs = require('fs-extra');
-const { PDFDocument } = require('pdf-lib');
+import fs from 'fs-extra';
+import { PDFDocument } from 'pdf-lib';
 
-async function insertPdf({ base, insert, output, page = null, every = null }) {
+export async function insertPdf({ base, insert, output, page = null, every = null }) {
   const baseBytes = await fs.readFile(base);
   const insertBytes = await fs.readFile(insert);
   const baseDoc = await PDFDocument.load(baseBytes);
@@ -17,4 +17,3 @@ async function insertPdf({ base, insert, output, page = null, every = null }) {
   const pdfBytes = await baseDoc.save();
   await fs.writeFile(output, pdfBytes);
 }
-module.exports = { insertPdf };

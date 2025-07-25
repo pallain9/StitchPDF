@@ -1,5 +1,5 @@
 // stitchPDF Secure Licensing System Test
-import { LicenseManager, licenseApiClient } from '../src/index.mjs';
+import { LicenseManager, licenseApiClient } from '../src/index.js';
 import chalk from 'chalk';
 
 console.log(chalk.blue.bold('🔒 stitchPDF Secure Licensing System Test\n'));
@@ -83,7 +83,7 @@ async function testSecureFeatures() {
     console.log(chalk.blue.bold('\n🛡️  Testing Secure Feature Protection\n'));
     
     try {
-        const { validateOptimization, _0x9a8b } = await import('../src/licensing/securityValidator.mjs');
+        const { validateOptimization, _0x9a8b } = await import('../src/licensing/securityValidator.js');
         const licenseManager = new LicenseManager();
         
         console.log(chalk.yellow('1. Testing Obfuscated Validators...'));

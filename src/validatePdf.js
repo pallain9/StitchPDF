@@ -1,7 +1,7 @@
-const fs = require('fs-extra');
-const { PDFDocument } = require('pdf-lib');
+import fs from 'fs-extra';
+import { PDFDocument } from 'pdf-lib';
 
-async function validatePdf(pdfPath) {
+export async function validatePdf(pdfPath) {
   const bytes = await fs.readFile(pdfPath);
   const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
   const pageCount = doc.getPageCount();
@@ -12,4 +12,3 @@ async function validatePdf(pdfPath) {
     isEncrypted
   };
 }
-module.exports = { validatePdf };
