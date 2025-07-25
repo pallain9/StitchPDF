@@ -44,6 +44,73 @@ function isWithinRegion(item, region) {
 }
 
 /**
+ * Parse and clean font name to be human-readable
+ * @param {string} rawFontName - Raw font name from PDF
+ * @param {Object} fontInfo - Additional font information from PDF
+ * @returns {Object} Human-readable font information
+ */
+function parseFont(rawFontName, fontInfo = {}) {
+    if (!rawFontName) return { family: 'Unknown', style: 'Regular', display: 'Unknown' };
+    
+    // Remove common PDF font prefixes (like BAAAAA+)
+    let cleanName = rawFontName.replace(/^[A-Z]{6}\+/, '');
+    
+    // Common font mappings
+    const fontMappings = {
+        'TimesNewRoman': 'Times New Roman',
+        'TimesNewRomanPS': 'Times New Roman',
+        'Arial': 'Arial',
+        'ArialMT': 'Arial',
+        'Helvetica': 'Helvetica',
+        'HelveticaNeue': 'Helvetica Neue',
+        'Calibri': 'Calibri',
+        'CourierNew': 'Courier New',
+        'Georgia': 'Georgia',
+        'Verdana': 'Verdana',
+        'TrebuchetMS': 'Trebuchet MS',
+        'ComicSansMS': 'Comic Sans MS'
+    };
+    
+    // Extract style information
+    let style = 'Regular';
+    let weight = 'Normal';
+    
+    if (cleanName.includes('Bold')) {
+        weight = 'Bold';
+        style = style === 'Regular' ? 'Bold' : style + ' Bold';
+    }
+    if (cleanName.includes('Italic')) {
+        style = style === 'Regular' ? 'Italic' : style + ' Italic';
+    }
+    if (cleanName.includes('Light')) {
+        weight = 'Light';
+        style = style === 'Regular' ? 'Light' : 'Light ' + style;
+    }
+    if (cleanName.includes('Black')) {
+        weight = 'Black';
+        style = style === 'Regular' ? 'Black' : 'Black ' + style;
+    }
+    
+    // Clean the base name
+    let baseName = cleanName
+        .replace(/[-_](Bold|Italic|Light|Black|Regular|Normal)/gi, '')
+        .replace(/BoldItalic|ItalicBold/gi, '')
+        .replace(/MT$|PS$/gi, '');
+    
+    // Map to human-readable name
+    const humanName = fontMappings[baseName] || baseName;
+    
+    return {
+        family: humanName,
+        style: style,
+        weight: weight,
+        size: fontInfo.size || 'Unknown',
+        display: `${humanName} ${style}${fontInfo.size ? ` (${Math.round(fontInfo.size)}pt)` : ''}`,
+        raw: rawFontName
+    };
+}
+
+/**
  * Extract text from PDF
  * @param {string} filePath - Path to PDF file
  * @param {Object} options - Extraction options
@@ -118,14 +185,24 @@ export async function extractTextWithCoordinates(filePath, options = {}) {
                 isWithinRegion(item, options.region)
             );
             
-            const textItems = filteredItems.map(item => ({
-                text: item.str,
-                x: item.transform[4],
-                y: item.transform[5],
-                width: item.width,
-                height: item.height,
-                fontName: item.fontName
-            }));
+            const textItems = filteredItems.map(item => {
+                const fontInfo = parseFont(item.fontName, { size: item.height });
+                return {
+                    text: item.str,
+                    x: item.transform[4],
+                    y: item.transform[5],
+                    width: item.width,
+                    height: item.height,
+                    font: {
+                        family: fontInfo.family,
+                        style: fontInfo.style,
+                        weight: fontInfo.weight,
+                        size: Math.round(item.height),
+                        display: fontInfo.display,
+                        raw: fontInfo.raw
+                    }
+                };
+            });
             
             if (textItems.length > 0) {
                 pages.push({
