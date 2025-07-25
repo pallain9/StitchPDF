@@ -16,6 +16,15 @@ export interface ExtractTextResult {
   logSummary: string;
 }
 
+export interface FontInfo {
+  family: string;
+  style: string;
+  weight: string;
+  size: number;
+  display: string;
+  raw: string;
+}
+
 export interface TextWithCoordinates {
   text: string;
   x: number;
@@ -23,6 +32,7 @@ export interface TextWithCoordinates {
   width: number;
   height: number;
   page: number;
+  font: FontInfo;
 }
 
 export interface ValidationOptions {
