@@ -1,6 +1,6 @@
 // Security Validator - Obfuscated License Protection Layer
 import crypto from 'crypto';
-import { _0x7f8a, _0x9b0c } from './licenseManager.mjs';
+import { _0x7f8a, _0x9b0c } from './licenseManager.js';
 
 // Obfuscated security constants
 const _0xa1b2 = Buffer.from('c2VjdXJpdHlWYWxpZGF0aW9u', 'base64').toString();

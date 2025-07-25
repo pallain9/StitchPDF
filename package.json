@@ -2,10 +2,18 @@
   "name": "stitchpdf",
   "version": "1.0.0",
   "description": "StitchPDF is a comprehensive Node.js library and CLI tool for PDF processing with security validation, text extraction, page insertion, and mail merge capabilities. Features both open-source and premium licensed functionality.",
-  "main": "src/index.mjs",
+  "main": "src/index.js",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "types": "./types/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./types/index.d.ts",
   "bin": {
-    "stitchpdf": "./bin/cli.mjs"
+    "stitchpdf": "./bin/cli.js"
   },
   "scripts": {
     "start": "node examples/basic-usage.mjs",

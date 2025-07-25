@@ -1,9 +1,9 @@
 // PDF Optimization Module - Now with WORKING Ghostscript integration!
 import fs from 'fs';
 import { PDFDocument } from 'pdf-lib';
-import { analyzeFonts } from '../analysis/fontAnalyzer.mjs';
-import { optimizePdfWithGhostscript, checkGhostscriptAvailability, estimateGhostscriptSavings } from './ghostscriptOptimizer.mjs';
-import { LicenseManager } from '../licensing/licenseManager.mjs';
+import { analyzeFonts } from '../analysis/fontAnalyzer.js';
+import { optimizePdfWithGhostscript, checkGhostscriptAvailability, estimateGhostscriptSavings } from './ghostscriptOptimizer.js';
+import { LicenseManager } from '../licensing/licenseManager.js';
 
 // Initialize license manager
 const licenseManager = new LicenseManager();

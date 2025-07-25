@@ -2,8 +2,8 @@
 import fs from 'fs';
 import { spawn } from 'child_process';
 import path from 'path';
-import { LicenseManager } from '../licensing/licenseManager.mjs';
-import { validateOptimization, _0x9a8b } from '../licensing/securityValidator.mjs';
+import { LicenseManager } from '../licensing/licenseManager.js';
+import { validateOptimization, _0x9a8b } from '../licensing/securityValidator.js';
 
 // Initialize license manager with security
 const licenseManager = new LicenseManager();

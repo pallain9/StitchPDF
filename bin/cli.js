@@ -18,11 +18,11 @@ import {
     analyzePdfOptimization,
     analyzeFonts,
     LicenseManager
-} from '../src/index.mjs';
+} from '../src/index.js';
 
 // Import premium features separately to handle licensing
-import { insertConditional } from '../src/insertion/pageInsertion.mjs';
-import { optimizePdf } from '../src/optimization/pdfOptimizer.mjs';
+import { insertConditional } from '../src/insertion/pageInsertion.js';
+import { optimizePdf } from '../src/optimization/pdfOptimizer.js';
 
 const licenseManager = new LicenseManager();
 
@@ -79,6 +79,29 @@ cli.command(
                 describe: 'Include coordinate information',
                 type: 'boolean',
                 default: false
+            })
+            .option('x', {
+                describe: 'X coordinate for region extraction',
+                type: 'number'
+            })
+            .option('y', {
+                describe: 'Y coordinate for region extraction', 
+                type: 'number'
+            })
+            .option('width', {
+                alias: 'w',
+                describe: 'Width of extraction region',
+                type: 'number'
+            })
+            .option('height', {
+                describe: 'Height of extraction region',
+                type: 'number'
+            })
+            .option('unit', {
+                alias: 'u',
+                describe: 'Unit for coordinates (pt, in, mm)',
+                choices: ['pt', 'in', 'mm'],
+                default: 'pt'
             });
     },
     async (argv) => {
@@ -89,6 +112,19 @@ cli.command(
                 preserveLayout: argv.layout,
                 pageNumbers: argv.pages ? argv.pages.split(',').map(p => parseInt(p.trim())) : null
             };
+            
+            // Add region extraction if coordinates are specified
+            if (argv.x !== undefined || argv.y !== undefined || argv.width !== undefined || argv.height !== undefined) {
+                options.region = {
+                    x: argv.x || 0,
+                    y: argv.y || 0,
+                    width: argv.width || 612, // Default page width
+                    height: argv.height || 792, // Default page height
+                    unit: argv.unit || 'pt'
+                };
+                console.log(chalk.blue('📍 Extracting from region:'), 
+                    `x=${options.region.x}, y=${options.region.y}, w=${options.region.width}, h=${options.region.height} ${options.region.unit}`);
+            }
             
             let result;
             if (argv.coordinates) {
