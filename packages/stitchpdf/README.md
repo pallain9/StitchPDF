@@ -241,6 +241,7 @@ Our Ghostscript integration delivers **actual optimization** unlike broken pdf-l
 | Insurance Policy | 65.3 MB | 3.6 MB | **94.6%** | Ghostscript |
 | Legal Documents | 723.0 MB | 79.1 MB | **89.1%** | Ghostscript |
 | Technical Manual | 2.0 GB | ~200 MB | **90%+** | Ghostscript |
+| Enterprise Document | 263.2 MB | 85.1 MB | **67.7%** | Enterprise Tier |
 
 **vs. pdf-lib**: 0.9% savings (BROKEN) 
 **vs. stitchPDF**: 90%+ savings (WORKS!)
@@ -337,24 +338,28 @@ Get access to advanced PDF processing capabilities:
 
 💎 **Pro** - $29/month
 - 1,000 operations included
+- Files up to 10MB per operation
 - $0.01 per additional operation  
 - 10% grace buffer (100 free extra operations)
 - Auto-upgrade after 2 consecutive overage months
 
 🏢 **Business** - $99/month  
 - 10,000 operations included
+- Files up to 50MB per operation
 - $0.008 per additional operation
 - 10% grace buffer (1,000 free extra operations)
 - Auto-upgrade after 2 consecutive overage months
 
 🚀 **Enterprise** - $299/month
 - 50,000 operations included
+- Files up to 500MB per operation (large file processing)
 - $0.006 per additional operation
 - 10% grace buffer (5,000 free extra operations)
 - Auto-upgrade after 2 consecutive overage months
 
 🌟 **Enterprise Unlimited** - $999/month
 - Up to 650,000 operations (no overages)
+- Files up to 2GB per operation (massive file processing)
 - Fair use policy with pricing renegotiation beyond 650K
 - Dedicated support and custom integrations
 
