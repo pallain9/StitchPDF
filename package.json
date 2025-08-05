@@ -1,71 +1,45 @@
 {
-  "name": "stitchpdf",
+  "name": "stitchpdf-monorepo",
   "version": "1.0.0",
-  "description": "StitchPDF is a comprehensive Node.js library and CLI tool for PDF processing with security validation, text extraction, page insertion, and mail merge capabilities. Features both open-source and premium licensed functionality.",
-  "main": "src/index.js",
+  "description": "StitchPDF monorepo - open source PDF processing with premium API features",
+  "private": true,
   "type": "module",
-  "exports": {
-    ".": {
-      "import": "./src/index.js",
-      "types": "./types/index.d.ts"
-    },
-    "./package.json": "./package.json"
-  },
-  "types": "./types/index.d.ts",
-  "bin": {
-    "stitchpdf": "./bin/cli.js"
-  },
+  "workspaces": [
+    "packages/stitchpdf",
+    "packages/stitchpdf-premium/client"
+  ],
   "scripts": {
-    "start": "node examples/basic-usage.mjs",
-    "test": "node test/index.mjs",
-    "examples": "node examples/basic-usage.mjs",
-    "cli": "node bin/cli.mjs",
-    "build": "echo 'No build step required for ES modules'",
-    "validate": "node bin/cli.mjs validate './Entering Time.pdf'"
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "eslint packages/*/src/**/*.js",
+    "clean": "rm -rf packages/*/node_modules packages/*/dist",
+    "dev:public": "npm run start -w packages/stitchpdf",
+    "dev:premium": "npm run start -w packages/stitchpdf-premium/client",
+    "publish:public": "npm publish -w packages/stitchpdf",
+    "publish:premium": "npm publish -w packages/stitchpdf-premium/client",
+    "bootstrap": "npm install && npm run build"
   },
   "keywords": [
     "pdf",
-    "pdf-manipulation",
+    "monorepo",
     "text-extraction",
-    "pdf-security",
+    "optimization",
     "mail-merge",
-    "pdf-validation",
-    "javascript-detection",
-    "page-insertion",
-    "pdf-processing",
-    "cli-tool",
-    "freemium",
-    "licensed-features"
+    "freemium"
   ],
   "author": "Peter Allain",
   "license": "MIT",
-  "homepage": "https://github.com/your-username/stitchPDF",
+  "homepage": "https://github.com/pallain9/stitchPDF",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-username/stitchPDF.git"
-  },
-  "bugs": {
-    "url": "https://github.com/your-username/stitchPDF/issues"
+    "url": "git+https://github.com/pallain9/stitchPDF.git"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   },
-  "files": [
-    "src/",
-    "bin/",
-    "examples/",
-    "README.md",
-    "LICENSE"
-  ],
-  "dependencies": {
-    "canvas": "^3.1.2",
-    "chalk": "^5.4.1",
-    "csv-parser": "^3.2.0",
-    "dotenv": "^17.2.0",
-    "fs-extra": "^11.3.0",
-    "pdf-lib": "^1.17.1",
-    "pdf-parse": "^1.1.1",
-    "pdfjs-dist": "^3.4.120",
-    "yargs": "^17.7.2"
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5"
   }
 }

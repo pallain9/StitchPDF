@@ -1,0 +1,50 @@
+{
+  "name": "@stitchpdf/premium",
+  "version": "1.0.0",
+  "description": "Premium PDF processing capabilities via secure API access - PDF optimization, mail merge, and advanced features.",
+  "main": "src/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "types": "./types/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "test": "node test/index.mjs"
+  },
+  "keywords": [
+    "pdf",
+    "optimization",
+    "mail-merge",
+    "premium",
+    "api",
+    "aws"
+  ],
+  "author": "Peter Allain",
+  "license": "Commercial",
+  "homepage": "https://stitchpdf.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pallain9/stitchPDF.git",
+    "directory": "packages/stitchpdf-premium/client"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "src/",
+    "types/",
+    "README.md"
+  ],
+  "dependencies": {
+    "stitchpdf": "^1.0.0",
+    "node-fetch": "^3.3.2",
+    "form-data": "^4.0.0"
+  },
+  "peerDependencies": {
+    "stitchpdf": "^1.0.0"
+  }
+} 
