@@ -1,0 +1,184 @@
+# Serverless Framework Configuration
+# Deploys StitchPDF Premium API to AWS
+
+service: stitchpdf-premium-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  timeout: 300 # 5 minutes for large PDF processing
+  memorySize: 3008 # Maximum memory for optimization
+  
+  environment:
+    STAGE: ${self:provider.stage}
+    S3_BUCKET_NAME: ${self:custom.bucketName}
+    LICENSE_TABLE: ${self:custom.licenseTable}
+    LICENSE_API_URL: ${self:custom.licenseApiUrl}
+    NODE_ENV: production
+    
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:GetObject
+        - s3:PutObject
+        - s3:DeleteObject
+        - s3:GetSignedUrl
+      Resource: 
+        - "arn:aws:s3:::${self:custom.bucketName}/*"
+    - Effect: Allow
+      Action:
+        - s3:ListBucket
+      Resource: 
+        - "arn:aws:s3:::${self:custom.bucketName}"
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:DescribeTable
+      Resource:
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.licenseTable}"
+    - Effect: Allow
+      Action:
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+      Resource: "*"
+
+custom:
+  bucketName: stitchpdf-premium-${self:provider.stage}
+  licenseTable: stitchpdf-licenses-${self:provider.stage}
+  licenseApiUrl: https://license-api.stitchpdf.com
+
+functions:
+  # PDF Optimization
+  getOptimizationUploadUrl:
+    handler: handlers/optimization.getUploadUrl
+    events:
+      - http:
+          path: /optimization/upload-url
+          method: post
+          cors: true
+          
+  optimizePdf:
+    handler: handlers/optimization.optimizePdf
+    events:
+      - http:
+          path: /optimization/optimize
+          method: post
+          cors: true
+          
+  # Detailed Health Check
+  detailedHealthCheck:
+    handler: handlers/health.detailed
+    events:
+      - http:
+          path: /health/detailed
+          method: get
+          cors: true
+
+  # Mail Merge
+  getMailMergeUploadUrl:
+    handler: handlers/mailMerge.uploadTemplate
+    events:
+      - http:
+          path: /mailmerge/upload-url
+          method: post
+          cors: true
+          
+  processMailMerge:
+    handler: handlers/mailMerge.processMerge
+    events:
+      - http:
+          path: /mailmerge/process
+          method: post
+          cors: true
+
+  # License Management
+  getLicenseInfo:
+    handler: handlers/license.getInfo
+    events:
+      - http:
+          path: /license/info
+          method: get
+          cors: true
+          
+  validateLicense:
+    handler: handlers/license.validate
+    events:
+      - http:
+          path: /license/validate
+          method: post
+          cors: true
+
+  # Health Check
+  healthCheck:
+    handler: handlers/health.check
+    events:
+      - http:
+          path: /health
+          method: get
+          cors: true
+
+resources:
+  Resources:
+    # S3 Bucket for file storage
+    S3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.bucketName}
+        VersioningConfiguration:
+          Status: Enabled
+        LifecycleConfiguration:
+          Rules:
+            - Id: DeleteUploadsAfter1Day
+              Status: Enabled
+              ExpirationInDays: 1
+              Prefix: uploads/
+            - Id: DeleteOptimizedAfter7Days
+              Status: Enabled
+              ExpirationInDays: 7
+              Prefix: optimized/
+        CorsConfiguration:
+          CorsRules:
+            - AllowedHeaders: ['*']
+              AllowedMethods: [GET, PUT, POST, DELETE]
+              AllowedOrigins: ['*']
+              MaxAge: 3000
+
+    # DynamoDB Table for License Management
+    LicenseTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.licenseTable}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: apiKey
+            AttributeType: S
+        KeySchema:
+          - AttributeName: apiKey
+            KeyType: HASH
+        TimeToLiveSpecification:
+          AttributeName: ttl
+          Enabled: true
+        PointInTimeRecoverySpecification:
+          PointInTimeRecoveryEnabled: true
+        SSESpecification:
+          SSEEnabled: true
+
+    # CloudWatch Log Groups
+    OptimizationLogGroup:
+      Type: AWS::Logs::LogGroup
+      Properties:
+        LogGroupName: /aws/lambda/stitchpdf-premium-${self:provider.stage}-optimization
+        RetentionInDays: 14
+
+plugins:
+  - serverless-offline
+  - serverless-bundle 

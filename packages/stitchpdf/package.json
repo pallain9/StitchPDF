@@ -1,0 +1,59 @@
+{
+  "name": "stitchpdf",
+  "version": "1.0.0",
+  "description": "Open-source PDF processing library with text extraction, font analysis, and basic PDF manipulation capabilities.",
+  "main": "src/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./src/index.js",
+      "types": "./types/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./types/index.d.ts",
+  "bin": {
+    "stitchpdf": "./bin/cli.js"
+  },
+  "scripts": {
+    "start": "node examples/basic-usage.mjs",
+    "test": "node test/index.mjs",
+    "examples": "node examples/basic-usage.mjs"
+  },
+  "keywords": [
+    "pdf",
+    "text-extraction",
+    "pdf-validation",
+    "font-analysis",
+    "pdf-security",
+    "open-source"
+  ],
+  "author": "Peter Allain",
+  "license": "MIT",
+  "homepage": "https://github.com/pallain9/stitchPDF",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pallain9/stitchPDF.git",
+    "directory": "packages/stitchpdf"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "src/",
+    "bin/",
+    "examples/",
+    "types/",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "canvas": "^3.1.2",
+    "chalk": "^5.4.1",
+    "fs-extra": "^11.3.0",
+    "pdf-lib": "^1.17.1",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^3.4.120",
+    "yargs": "^17.7.2"
+  }
+} 
