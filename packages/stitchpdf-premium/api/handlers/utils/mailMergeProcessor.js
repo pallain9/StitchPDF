@@ -1,10 +1,10 @@
 // Mail Merge Processing Utilities
 // Server-side PDF template processing and personalization
 
-import { PDFDocument, rgb } from 'pdf-lib';
-import fs from 'fs/promises';
-import csv from 'csv-parser';
-import { Readable } from 'stream';
+const { PDFDocument, rgb } = require('pdf-lib');
+const fs = require('fs/promises');
+const csv = require('csv-parser');
+const { Readable } = require('stream');
 
 /**
  * Process mail merge with template and data
@@ -13,7 +13,7 @@ import { Readable } from 'stream';
  * @param {Object} options - Processing options
  * @returns {Promise<Object>} Processing result
  */
-export async function processMailMerge(templateBuffer, mergeData, options = {}) {
+async function processMailMerge(templateBuffer, mergeData, options = {}) {
     const {
         outputFormat = 'individual', // 'individual' or 'combined'
         includeMetadata = true,
@@ -92,7 +92,7 @@ export async function processMailMerge(templateBuffer, mergeData, options = {}) 
  * @param {Object} options - Configuration options
  * @returns {Promise<Object>} Merge configuration
  */
-export async function createMailMerge(templateBuffer, options = {}) {
+async function createMailMerge(templateBuffer, options = {}) {
     const {
         fieldMarkers = ['{{', '}}'],
         outputPath
@@ -348,3 +348,8 @@ function generateSampleData(fields) {
     
     return sampleData;
 }
+
+module.exports = {
+    processMailMerge,
+    createMailMerge
+};

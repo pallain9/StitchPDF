@@ -180,5 +180,4 @@ resources:
         RetentionInDays: 14
 
 plugins:
-  - serverless-offline
-  - serverless-bundle 
+  - serverless-offline 

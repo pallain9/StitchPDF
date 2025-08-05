@@ -1,7 +1,7 @@
 // Premium API Authentication Middleware
 // Validates API keys and user licenses
 
-import AWS from 'aws-sdk';
+const AWS = require('aws-sdk');
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 const LICENSE_TABLE = process.env.LICENSE_TABLE || 'stitchpdf-licenses';
@@ -11,7 +11,7 @@ const LICENSE_TABLE = process.env.LICENSE_TABLE || 'stitchpdf-licenses';
  * @param {string} apiKey - The API key to validate
  * @returns {Promise<Object>} License validation result
  */
-export async function validateLicense(apiKey) {
+async function validateLicense(apiKey) {
     try {
         if (!apiKey) {
             return {
@@ -118,7 +118,7 @@ function getMonthlyLimit(tier) {
  * @param {string} operation - The operation performed
  * @param {Object} metadata - Additional operation metadata
  */
-export async function recordUsage(apiKey, operation, metadata = {}) {
+async function recordUsage(apiKey, operation, metadata = {}) {
     try {
         const currentMonth = new Date().toISOString().substring(0, 7);
         
@@ -177,7 +177,7 @@ async function recordDetailedUsage(apiKey, operation, metadata) {
  * @param {string} apiKey - The API key
  * @returns {Promise<Object>} License information
  */
-export async function getLicenseInfo(apiKey) {
+async function getLicenseInfo(apiKey) {
     try {
         const validation = await validateLicense(apiKey);
         
@@ -220,7 +220,7 @@ export async function getLicenseInfo(apiKey) {
  * Middleware function for API Gateway
  * Validates the API key and attaches license info to the event
  */
-export function authMiddleware(handler) {
+function authMiddleware(handler) {
     return async (event, context) => {
         try {
             const body = JSON.parse(event.body || '{}');
@@ -278,3 +278,10 @@ export function authMiddleware(handler) {
         }
     };
 }
+
+module.exports = {
+    validateLicense,
+    recordUsage,
+    getLicenseInfo,
+    authMiddleware
+};

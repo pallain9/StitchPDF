@@ -1,5 +1,5 @@
 {
-  "name": "@stitchpdf/premium",
+  "name": "stitchpdf-premium",
   "version": "1.0.0",
   "description": "Premium PDF processing capabilities via secure API access - PDF optimization, mail merge, and advanced features.",
   "main": "src/index.js",

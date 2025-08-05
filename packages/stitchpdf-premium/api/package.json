@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "StitchPDF Premium API - AWS Lambda handlers for premium PDF processing features",
   "main": "handlers/index.js",
-  "type": "module",
+
   "private": true,
   "scripts": {
     "deploy": "serverless deploy",

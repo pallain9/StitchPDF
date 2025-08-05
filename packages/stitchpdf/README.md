@@ -307,36 +307,48 @@ const fonts = await analyzeFonts('document.pdf', fontOptions);
 
 ## 🔒 Licensing & Features
 
-stitchPDF uses a **freemium model** with three tiers:
+stitchPDF uses a **freemium model** - start free, upgrade for advanced features:
 
-### 📗 FREE Tier
+### 📗 FREE Package (stitchpdf)
 - ✅ **Font Analysis** - Detect fonts and duplicates
 - ✅ **Text Extraction** - Extract text with coordinates 
 - ✅ **PDF Validation** - Security scanning and document validation
 - ✅ **Basic Analysis** - Optimization opportunities assessment
+- ✅ **Open Source** - MIT licensed
 
-### 📘 PRO Tier ($29/month)
-- ✅ **All FREE features**
-- 🚀 **PDF Optimization** - Real 90%+ compression with Ghostscript
-- 📄 **Page Insertion** - Insert pages at specific positions
-- 📧 **Mail Merge** - Create personalized documents
-- 📊 **Font Deduplication** - Remove duplicate fonts
-- 🛠️ **Advanced Processing** - High-performance operations
+### 💎 PREMIUM Package (stitchpdf-premium)
+Get access to advanced PDF processing capabilities:
 
-### 📕 ENTERPRISE Tier ($99/month)  
-- ✅ **All PRO features**
+- 🚀 **Real PDF Optimization** - 90%+ compression with Ghostscript
+- 📧 **Mail Merge** - Create personalized documents  
 - ⚡ **Bulk Processing** - Process multiple files simultaneously
-- 🏢 **Team License** - Multiple user access
-- 📞 **Priority Support** - Direct technical support
-- 🔧 **Custom Integrations** - API customization
+- 📄 **Advanced Page Operations** - Insert, merge, split pages
+- 🏢 **Commercial License** - Use in commercial applications
+- 📞 **Priority Support** - Direct technical assistance
 
-### Try Before You Buy
+## 💰 Premium Pricing
+
+**📞 Get Your Premium License**  
+**Contact**: Peter Allain, Founder  
+**Email**: pballain910@gmail.com  
+**Subject**: "stitchPDF Premium License Request"
+
+**Pricing**:
+- 💎 **Pro**: $29/month (1,000 operations)
+- 🏢 **Business**: $99/month (10,000 operations)  
+- 🚀 **Enterprise**: $299/month (50,000 operations)
+
+**🎁 Free 7-day trial included!**
+
+Simply email with your use case and expected volume. I personally handle all premium licenses to ensure you get exactly what you need.
+
+### Try Premium Features
 ```bash
-# Activate 7-day free trial of PRO features
-stitchpdf license demo
+# Install premium package
+npm install stitchpdf-premium
 
-# Check what features you have access to
-stitchpdf license status
+# Contact for license key
+# Email: pballain910@gmail.com
 ```
 
 ## ⚡ Performance Tips

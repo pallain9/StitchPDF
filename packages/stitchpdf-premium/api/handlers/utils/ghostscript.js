@@ -1,13 +1,9 @@
 // Ghostscript PDF Optimization Utilities
 // Server-side PDF compression and optimization
 
-import { spawn } from 'child_process';
-import fs from 'fs/promises';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const { spawn } = require('child_process');
+const fs = require('fs/promises');
+const path = require('path');
 
 /**
  * Optimize PDF using Ghostscript
@@ -15,7 +11,7 @@ const __dirname = path.dirname(__filename);
  * @param {Object} options - Optimization options
  * @returns {Promise<Object>} Optimization result with data and stats
  */
-export async function optimizePdfWithGhostscript(pdfBuffer, options = {}) {
+async function optimizePdfWithGhostscript(pdfBuffer, options = {}) {
     const {
         compressionLevel = 'medium',
         optimizeImages = true,
@@ -259,7 +255,7 @@ async function getGhostscriptVersion() {
 /**
  * Check if Ghostscript is available
  */
-export async function checkGhostscriptAvailability() {
+async function checkGhostscriptAvailability() {
     try {
         const version = await getGhostscriptVersion();
         return {
@@ -277,7 +273,7 @@ export async function checkGhostscriptAvailability() {
 /**
  * Estimate optimization savings without processing
  */
-export async function estimateGhostscriptSavings(fileSize, compressionLevel = 'medium') {
+async function estimateGhostscriptSavings(fileSize, compressionLevel = 'medium') {
     // Estimation based on typical Ghostscript performance
     const savingsEstimates = {
         'low': { min: 15, max: 30, typical: 22 },
@@ -303,3 +299,9 @@ export async function estimateGhostscriptSavings(fileSize, compressionLevel = 'm
         }
     };
 }
+
+module.exports = {
+    optimizePdfWithGhostscript,
+    checkGhostscriptAvailability,
+    estimateGhostscriptSavings
+};
