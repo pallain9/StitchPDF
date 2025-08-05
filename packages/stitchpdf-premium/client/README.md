@@ -138,22 +138,46 @@ const results = await pdf.processBatch(files, {
 **Email**: pballain910@gmail.com  
 **Subject**: "stitchPDF Premium License Request"
 
-### Pricing Tiers:
-- 💎 **Pro**: $29/month (1,000 operations)
-  - All premium features
-  - Email support
-  - Perfect for individual developers
+### **Smart Pricing with Auto-Optimization**
 
-- 🏢 **Business**: $99/month (10,000 operations)  
-  - All premium features
-  - Priority email support
-  - Team usage rights
-  
-- 🚀 **Enterprise**: $299/month (50,000 operations)
-  - All premium features
-  - Priority support
-  - Custom integrations
-  - Bulk processing optimized
+💎 **Pro** - $29/month
+- 1,000 operations included
+- $0.01 per additional operation  
+- 10% grace buffer (100 free extra operations)
+- All premium features
+- Email support
+- Perfect for individual developers
+
+🏢 **Business** - $99/month  
+- 10,000 operations included
+- $0.008 per additional operation
+- 10% grace buffer (1,000 free extra operations)
+- All premium features
+- Priority email support
+- Team usage rights
+
+🚀 **Enterprise** - $299/month
+- 50,000 operations included
+- $0.006 per additional operation
+- 10% grace buffer (5,000 free extra operations)
+- All premium features
+- Priority support
+- Custom integrations
+- Bulk processing optimized
+
+🌟 **Enterprise Unlimited** - $999/month
+- Up to 650,000 operations (no overages)
+- Fair use policy with pricing renegotiation beyond 650K
+- All premium features
+- Dedicated support
+- Custom integrations
+- 24/7 priority support
+
+### **How Smart Pricing Works**
+🎯 **Occasional spikes?** Pay overages once - perfect for variable workloads.  
+🎯 **Consistent growth?** We automatically upgrade you to a better tier after 2 consecutive overage months.  
+🎯 **No gaming the system** - Auto-upgrades ensure you're on the right tier for your usage.  
+🎯 **Grace buffers** prevent surprise charges for small overages.
 
 **🎁 Free 7-day trial included with every license!**
 

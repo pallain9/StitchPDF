@@ -333,12 +333,37 @@ Get access to advanced PDF processing capabilities:
 **Email**: pballain910@gmail.com  
 **Subject**: "stitchPDF Premium License Request"
 
-**Pricing**:
-- 💎 **Pro**: $29/month (1,000 operations)
-- 🏢 **Business**: $99/month (10,000 operations)  
-- 🚀 **Enterprise**: $299/month (50,000 operations)
+### **Smart Pricing with Auto-Optimization**
 
-**🎁 Free 7-day trial included!**
+💎 **Pro** - $29/month
+- 1,000 operations included
+- $0.01 per additional operation  
+- 10% grace buffer (100 free extra operations)
+- Auto-upgrade after 2 consecutive overage months
+
+🏢 **Business** - $99/month  
+- 10,000 operations included
+- $0.008 per additional operation
+- 10% grace buffer (1,000 free extra operations)
+- Auto-upgrade after 2 consecutive overage months
+
+🚀 **Enterprise** - $299/month
+- 50,000 operations included
+- $0.006 per additional operation
+- 10% grace buffer (5,000 free extra operations)
+- Auto-upgrade after 2 consecutive overage months
+
+🌟 **Enterprise Unlimited** - $999/month
+- Up to 650,000 operations (no overages)
+- Fair use policy with pricing renegotiation beyond 650K
+- Dedicated support and custom integrations
+
+### **How Smart Pricing Works**
+🎯 **One-time spikes?** Just pay the overage fee - perfect for seasonal businesses.  
+🎯 **Consistent growth?** We automatically upgrade you to a better tier after 2 months.  
+🎯 **No surprises!** Grace buffers and clear overage rates prevent unexpected bills.
+
+**🎁 Free 7-day trial included with every tier!**
 
 Simply email with your use case and expected volume. I personally handle all premium licenses to ensure you get exactly what you need.
 
