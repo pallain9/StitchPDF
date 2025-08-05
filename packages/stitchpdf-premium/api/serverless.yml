@@ -15,6 +15,7 @@ provider:
   environment:
     STAGE: ${self:provider.stage}
     S3_BUCKET_NAME: ${self:custom.bucketName}
+    DOCUMENTS_BUCKET: ${self:custom.bucketName}
     LICENSE_TABLE: ${self:custom.licenseTable}
     LICENSE_API_URL: ${self:custom.licenseApiUrl}
     NODE_ENV: production
@@ -71,6 +72,25 @@ functions:
     events:
       - http:
           path: /optimization/optimize
+          method: post
+          cors: true
+          
+  # Large File Upload (Enterprise+)
+  generateUploadUrl:
+    handler: handlers/fileUpload.generateUploadUrl
+    events:
+      - http:
+          path: /files/upload-url
+          method: post
+          cors: true
+          
+  processLargeFile:
+    handler: handlers/fileUpload.processLargeFile
+    timeout: 900 # 15 minutes for large file processing
+    memorySize: 3008 # Maximum memory
+    events:
+      - http:
+          path: /files/process-large
           method: post
           cors: true
           
