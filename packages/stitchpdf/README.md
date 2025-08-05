@@ -236,11 +236,11 @@ import {
 
 Our Ghostscript integration delivers **actual optimization** unlike broken pdf-lib solutions:
 
-| File | Original Size | Optimized Size | Savings | Tool |
-|------|---------------|----------------|---------|------|
-| BambooUAT Policy | 65.3 MB | 3.6 MB | **94.6%** | Ghostscript |
-| NN_DO Policies | 723.0 MB | 79.1 MB | **89.1%** | Ghostscript |
-| Sample Document | 2.0 GB | ~200 MB | **90%+** | Ghostscript |
+| File Type | Original Size | Optimized Size | Savings | Tool |
+|-----------|---------------|----------------|---------|------|
+| Insurance Policy | 65.3 MB | 3.6 MB | **94.6%** | Ghostscript |
+| Legal Documents | 723.0 MB | 79.1 MB | **89.1%** | Ghostscript |
+| Technical Manual | 2.0 GB | ~200 MB | **90%+** | Ghostscript |
 
 **vs. pdf-lib**: 0.9% savings (BROKEN) 
 **vs. stitchPDF**: 90%+ savings (WORKS!)

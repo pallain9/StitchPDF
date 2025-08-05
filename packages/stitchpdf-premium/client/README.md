@@ -64,9 +64,9 @@ Premium optimization delivers actual results where other tools fail:
 
 | File Type | Original Size | Optimized Size | Savings | Time |
 |-----------|---------------|----------------|---------|------|
-| Policy Documents | 65.3 MB | 3.6 MB | **94.6%** | 12s |
+| Insurance Documents | 65.3 MB | 3.6 MB | **94.6%** | 12s |
 | Technical Manuals | 723.0 MB | 79.1 MB | **89.1%** | 45s |
-| Bulk Reports | 2.0 GB | ~200 MB | **90%+** | 3m |
+| Report Collections | 2.0 GB | ~200 MB | **90%+** | 3m |
 
 **vs. pdf-lib**: 0.9% savings (BROKEN)  
 **vs. stitchPDF Premium**: 90%+ savings (WORKS!)
