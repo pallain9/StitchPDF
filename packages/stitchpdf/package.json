@@ -1,6 +1,6 @@
 {
   "name": "stitchpdf",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Open-source PDF processing library with text extraction, font analysis, and basic PDF manipulation capabilities.",
   "main": "src/index.js",
   "type": "module",
