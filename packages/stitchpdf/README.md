@@ -236,11 +236,11 @@ import {
 
 Our Ghostscript integration delivers **actual optimization** unlike broken pdf-lib solutions:
 
-| File | Original Size | Optimized Size | Savings | Tool |
-|------|---------------|----------------|---------|------|
-| BambooUAT Policy | 65.3 MB | 3.6 MB | **94.6%** | Ghostscript |
-| NN_DO Policies | 723.0 MB | 79.1 MB | **89.1%** | Ghostscript |
-| Sample Document | 2.0 GB | ~200 MB | **90%+** | Ghostscript |
+| File Type | Original Size | Optimized Size | Savings | Tool |
+|-----------|---------------|----------------|---------|------|
+| Insurance Policy | 65.3 MB | 3.6 MB | **94.6%** | Ghostscript |
+| Legal Documents | 723.0 MB | 79.1 MB | **89.1%** | Ghostscript |
+| Technical Manual | 2.0 GB | ~200 MB | **90%+** | Ghostscript |
 
 **vs. pdf-lib**: 0.9% savings (BROKEN) 
 **vs. stitchPDF**: 90%+ savings (WORKS!)
@@ -307,36 +307,73 @@ const fonts = await analyzeFonts('document.pdf', fontOptions);
 
 ## 🔒 Licensing & Features
 
-stitchPDF uses a **freemium model** with three tiers:
+stitchPDF uses a **freemium model** - start free, upgrade for advanced features:
 
-### 📗 FREE Tier
+### 📗 FREE Package (stitchpdf)
 - ✅ **Font Analysis** - Detect fonts and duplicates
 - ✅ **Text Extraction** - Extract text with coordinates 
 - ✅ **PDF Validation** - Security scanning and document validation
 - ✅ **Basic Analysis** - Optimization opportunities assessment
+- ✅ **Open Source** - MIT licensed
 
-### 📘 PRO Tier ($29/month)
-- ✅ **All FREE features**
-- 🚀 **PDF Optimization** - Real 90%+ compression with Ghostscript
-- 📄 **Page Insertion** - Insert pages at specific positions
-- 📧 **Mail Merge** - Create personalized documents
-- 📊 **Font Deduplication** - Remove duplicate fonts
-- 🛠️ **Advanced Processing** - High-performance operations
+### 💎 PREMIUM Package (stitchpdf-premium)
+Get access to advanced PDF processing capabilities:
 
-### 📕 ENTERPRISE Tier ($99/month)  
-- ✅ **All PRO features**
+- 🚀 **Real PDF Optimization** - 90%+ compression with Ghostscript
+- 📧 **Mail Merge** - Create personalized documents  
 - ⚡ **Bulk Processing** - Process multiple files simultaneously
-- 🏢 **Team License** - Multiple user access
-- 📞 **Priority Support** - Direct technical support
-- 🔧 **Custom Integrations** - API customization
+- 📄 **Advanced Page Operations** - Insert, merge, split pages
+- 🏢 **Commercial License** - Use in commercial applications
+- 📞 **Priority Support** - Direct technical assistance
 
-### Try Before You Buy
+## 💰 Premium Pricing
+
+**📞 Get Your Premium License**  
+**Contact**: Peter Allain, Founder  
+**Email**: pballain910@gmail.com  
+**Subject**: "stitchPDF Premium License Request"
+
+### **Smart Pricing with Auto-Optimization**
+
+💎 **Pro** - $29/month
+- 1,000 operations included
+- $0.01 per additional operation  
+- 10% grace buffer (100 free extra operations)
+- Auto-upgrade after 2 consecutive overage months
+
+🏢 **Business** - $99/month  
+- 10,000 operations included
+- $0.008 per additional operation
+- 10% grace buffer (1,000 free extra operations)
+- Auto-upgrade after 2 consecutive overage months
+
+🚀 **Enterprise** - $299/month
+- 50,000 operations included
+- $0.006 per additional operation
+- 10% grace buffer (5,000 free extra operations)
+- Auto-upgrade after 2 consecutive overage months
+
+🌟 **Enterprise Unlimited** - $999/month
+- Up to 650,000 operations (no overages)
+- Fair use policy with pricing renegotiation beyond 650K
+- Dedicated support and custom integrations
+
+### **How Smart Pricing Works**
+🎯 **One-time spikes?** Just pay the overage fee - perfect for seasonal businesses.  
+🎯 **Consistent growth?** We automatically upgrade you to a better tier after 2 months.  
+🎯 **No surprises!** Grace buffers and clear overage rates prevent unexpected bills.
+
+**🎁 Free 7-day trial included with every tier!**
+
+Simply email with your use case and expected volume. I personally handle all premium licenses to ensure you get exactly what you need.
+
+### Try Premium Features
 ```bash
-# Activate 7-day free trial of PRO features
-stitchpdf license demo
+# Install premium package
+npm install stitchpdf-premium
 
-# Check what features you have access to
-stitchpdf license status
+# Contact for license key
+# Email: pballain910@gmail.com
 ```
 
 ## ⚡ Performance Tips

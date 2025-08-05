@@ -1,12 +1,12 @@
 // License Management API Handlers
 // Handles license information and validation endpoints
 
-import { getLicenseInfo, validateLicense } from '../middleware/auth.js';
+const { getLicenseInfo, validateLicense } = require('../middleware/auth.js');
 
 /**
  * Get license information
  */
-export async function getInfo(event, context) {
+async function getInfo(event, context) {
     try {
         const body = JSON.parse(event.body || '{}');
         const apiKey = body.apiKey || event.headers['x-api-key'];
@@ -74,7 +74,7 @@ export async function getInfo(event, context) {
 /**
  * Validate license
  */
-export async function validate(event, context) {
+async function validate(event, context) {
     try {
         const body = JSON.parse(event.body || '{}');
         const apiKey = body.apiKey || event.headers['x-api-key'];
@@ -127,7 +127,7 @@ export async function validate(event, context) {
 /**
  * Get usage statistics
  */
-export async function getUsage(event, context) {
+async function getUsage(event, context) {
     try {
         const body = JSON.parse(event.body || '{}');
         const apiKey = body.apiKey || event.headers['x-api-key'];
@@ -262,3 +262,9 @@ function getTierLimits(tier) {
 
     return limits[tier] || limits.trial;
 }
+
+module.exports = {
+    getInfo,
+    validate,
+    getUsage
+};

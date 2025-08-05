@@ -118,3 +118,20 @@ security-report.json
 # Archive files
 *.zip
 *.tar.gz
+
+# Internal business documents (keep private)
+testing/
+/cost-analysis.*
+/pricing-strategy.*
+/go-to-market.*
+/business-plan.*
+/realistic-expectations.*
+/email-setup.*
+/launch-plan.*
+*-analysis.mjs
+PRICING_STRATEGY_*
+
+# Internal documentation (not customer-facing)
+/internal-docs/
+/founder-notes/
+/strategy/

@@ -1,15 +1,15 @@
 // Health Check API Handler
 // Monitors API health and dependencies
 
-import { checkGhostscriptAvailability } from './utils/ghostscript.js';
-import AWS from 'aws-sdk';
+const { checkGhostscriptAvailability } = require('./utils/ghostscript.js');
+const AWS = require('aws-sdk');
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 /**
  * Health check endpoint
  */
-export async function check(event, context) {
+async function check(event, context) {
     const healthChecks = {
         api: 'healthy',
         timestamp: new Date().toISOString(),
@@ -129,7 +129,7 @@ async function checkS3() {
 /**
  * Detailed health check with metrics
  */
-export async function detailed(event, context) {
+async function detailed(event, context) {
     try {
         const checks = await performDetailedChecks();
         
@@ -271,3 +271,8 @@ async function checkS3Detailed() {
         };
     }
 }
+
+module.exports = {
+    check,
+    detailed
+};

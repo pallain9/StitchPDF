@@ -1,9 +1,9 @@
 // AWS Lambda Handler - Mail Merge
 // Handles template processing and personalized PDF generation
 
-import AWS from 'aws-sdk';
-import { createMailMerge, processMailMerge } from './utils/mailMergeProcessor.js';
-import { validateLicense } from '../middleware/auth.js';
+const AWS = require('aws-sdk');
+const { createMailMerge, processMailMerge } = require('./utils/mailMergeProcessor.js');
+const { validateLicense } = require('../middleware/auth.js');
 
 const s3 = new AWS.S3();
 const BUCKET_NAME = process.env.S3_BUCKET_NAME;
@@ -11,7 +11,7 @@ const BUCKET_NAME = process.env.S3_BUCKET_NAME;
 /**
  * Process mail merge with template and data
  */
-export async function processMerge(event, context) {
+async function processMerge(event, context) {
     try {
         const { apiKey, templateKey, mergeData, options = {} } = JSON.parse(event.body);
         
@@ -120,7 +120,7 @@ export async function processMerge(event, context) {
 /**
  * Upload template and get presigned URLs for data upload
  */
-export async function uploadTemplate(event, context) {
+async function uploadTemplate(event, context) {
     try {
         const { apiKey, fileName } = JSON.parse(event.body);
         
@@ -159,4 +159,9 @@ export async function uploadTemplate(event, context) {
             body: JSON.stringify({ error: 'Failed to generate template upload URL' })
         };
     }
-} 
+}
+
+module.exports = {
+    processMerge,
+    uploadTemplate
+}; 

@@ -1,9 +1,9 @@
 // AWS Lambda Handler - PDF Optimization
 // Handles presigned URL generation and PDF optimization processing
 
-import AWS from 'aws-sdk';
-import { optimizePdfWithGhostscript } from './utils/ghostscript.js';
-import { validateLicense } from '../middleware/auth.js';
+const AWS = require('aws-sdk');
+const { optimizePdfWithGhostscript } = require('./utils/ghostscript.js');
+const { validateLicense } = require('../middleware/auth.js');
 
 const s3 = new AWS.S3();
 const BUCKET_NAME = process.env.S3_BUCKET_NAME;
@@ -11,7 +11,7 @@ const BUCKET_NAME = process.env.S3_BUCKET_NAME;
 /**
  * Generate presigned URL for file upload
  */
-export async function getUploadUrl(event, context) {
+async function getUploadUrl(event, context) {
     try {
         const { apiKey, fileName, fileSize } = JSON.parse(event.body);
         
@@ -64,7 +64,7 @@ export async function getUploadUrl(event, context) {
 /**
  * Process PDF optimization
  */
-export async function optimizePdf(event, context) {
+async function optimizePdf(event, context) {
     try {
         const { apiKey, key, options = {} } = JSON.parse(event.body);
         
@@ -134,4 +134,9 @@ export async function optimizePdf(event, context) {
             body: JSON.stringify({ error: 'Optimization failed' })
         };
     }
-} 
+}
+
+module.exports = {
+    getUploadUrl,
+    optimizePdf
+}; 
